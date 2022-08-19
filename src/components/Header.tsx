@@ -6,7 +6,7 @@ import logo2 from "../assets/logo.svg";
 
 const Header = () => {
   return (
-    <header className="p-2 w-full flex flex-col md:flex-row justify-between items-center">
+    <header className="md:h-28 p-2 w-full flex flex-col md:flex-row justify-between items-center">
       <img alt="Softvision" className="my-3 md:my-0" src={logo} width={240} />
       <p className="text-indigo-500 text-center my-3 md:my-0">
         Este es un challenge ofrecido por Goncy, para verlo{" "}

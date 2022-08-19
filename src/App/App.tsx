@@ -7,7 +7,7 @@ import Main from "../components/Main";
 
 function App() {
   return (
-    <div className="bg-indigo-50 h-min-full w-full">
+    <div className="h-min-full w-full">
       <Header />
       <Main />
     </div>

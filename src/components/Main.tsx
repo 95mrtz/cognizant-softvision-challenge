@@ -31,7 +31,7 @@ const Main = () => {
   };
 
   return (
-    <main className="h-screen">
+    <main className="md:h-[calc(100vh-112px)]">
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 grid-flow-row gap-2 lg:gap-x-2 p-2">
         {seccciones.map((element, index) => (
           <div key={element} className="bg-indigo-800 p-3 flex flex-col rounded-md">
