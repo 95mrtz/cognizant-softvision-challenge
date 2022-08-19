@@ -5,14 +5,7 @@ import {Candidate} from "../types/candidate";
 
 import candidatoMove from "./candidatoMove";
 
-const Card = ({
-  candidato,
-  listCandidatos,
-  setListCandidatos,
-  secciones,
-  indexSeccion,
-  seccion,
-}): JSX.Element => {
+function Card(props: any): JSX.Element {
   // estado para mostrar (o no) el input para actualizar comentario del candidato
   const [modoComentario, setModoComentario] = useState(false);
   // estado y funciones para actualizar el comentario del candidato
@@ -25,7 +18,7 @@ const Card = ({
 
   // funcion para actualizar el comentario del candidato
   const updateComentario = (identificador: string) => {
-    const foundCandidato = listCandidatos.find(
+    const foundCandidato = props.listCandidatos.find(
       (element: {id: string}) => element.id === identificador,
     );
 
@@ -33,25 +26,25 @@ const Card = ({
       foundCandidato.comments = nuevoComentario;
     }
 
-    setListCandidatos([...listCandidatos]);
+    props.setListCandidatos([...props.listCandidatos]);
     setNuevoComentario("");
     setModoComentario(false);
   };
 
   // funcion para eliminar un candidato y luego actualizar la lista de candidatos
   const eliminarCandidato = (identificador: string) => {
-    const foundCandidato = listCandidatos.find(
+    const foundCandidato = props.listCandidatos.find(
       (element: {id: string}) => element.id === identificador,
     );
 
     if (foundCandidato != undefined) {
-      const indexCandidato = listCandidatos.indexOf(foundCandidato, 0);
-      const eliminado = listCandidatos.splice(indexCandidato, 1);
+      const indexCandidato = props.listCandidatos.indexOf(foundCandidato, 0);
+      const eliminado = props.listCandidatos.splice(indexCandidato, 1);
 
       console.log(eliminado);
     }
 
-    setListCandidatos([...listCandidatos]);
+    props.setListCandidatos([...props.listCandidatos]);
   };
 
   const updateCandidatos = ({
@@ -76,20 +69,20 @@ const Card = ({
     });
 
     if (listaNueva != undefined) {
-      setListCandidatos(listaNueva);
+      props.setListCandidatos(listaNueva);
     }
   };
 
   return (
-    <div key={candidato.id} className="p-2 my-2 bg-indigo-500 rounded-md">
+    <div key={props.candidato.id} className="p-2 my-2 bg-indigo-500 rounded-md">
       <div className="flex flex-row justify-end">
-        <button onClick={() => eliminarCandidato(candidato.id)}>
+        <button onClick={() => eliminarCandidato(props.candidato.id)}>
           <IoCloseCircle className="text-xl text-indigo-200" />
         </button>
       </div>
       <div className="my-2 flex flex-col">
         <span className="underline underline-offset-2 text-indigo-50">Nombre del candidato:</span>
-        <h1 className="font-bold text-indigo-100">{candidato.name}</h1>
+        <h1 className="font-bold text-indigo-100">{props.candidato.name}</h1>
       </div>
       <div className="my-4 flex flex-col">
         <span className="underline underline-offset-2 text-indigo-50">Comentarios: </span>
@@ -100,14 +93,14 @@ const Card = ({
             onChange={handleChangeNuevoComentario}
           />
         ) : (
-          <h3 className="italic font-light  text-indigo-100">{candidato.comments}</h3>
+          <h3 className="italic font-light  text-indigo-100">{props.candidato.comments}</h3>
         )}
       </div>
       <div>
         {modoComentario ? (
           <button
             className="bg-indigo-900 text-indigo-100 w-full p-2 rounded-md flex flex-row justify-center"
-            onClick={() => updateComentario(candidato.id)}
+            onClick={() => updateComentario(props.candidato.id)}
           >
             {" "}
             Actualizar
@@ -125,14 +118,14 @@ const Card = ({
       <div className="my-2 flex flex-row justify-between items-center">
         <button
           className="bg-indigo-100 w-1/2 mx-1 p-2 rounded-md flex flex-row justify-center"
-          disabled={indexSeccion < 1 ? true : false}
+          disabled={props.indexSeccion < 1 ? true : false}
           onClick={() =>
             updateCandidatos({
-              identificador: candidato.id,
-              seccion: seccion,
+              identificador: props.candidato.id,
+              seccion: props.seccion,
               movimiento: "atras",
-              listCandidatos: listCandidatos,
-              listSecciones: secciones,
+              listCandidatos: props.listCandidatos,
+              listSecciones: props.secciones,
             })
           }
         >
@@ -140,14 +133,14 @@ const Card = ({
         </button>
         <button
           className="bg-indigo-100 w-1/2 mx-1 p-2 rounded-md flex flex-row justify-center"
-          disabled={indexSeccion >= secciones.length - 1 ? true : false}
+          disabled={props.indexSeccion >= props.secciones.length - 1 ? true : false}
           onClick={() =>
             updateCandidatos({
-              identificador: candidato.id,
-              seccion: seccion,
+              identificador: props.candidato.id,
+              seccion: props.seccion,
               movimiento: "adelante",
-              listCandidatos: listCandidatos,
-              listSecciones: secciones,
+              listCandidatos: props.listCandidatos,
+              listSecciones: props.secciones,
             })
           }
         >
@@ -156,6 +149,6 @@ const Card = ({
       </div>
     </div>
   );
-};
+}
 
 export default Card;
