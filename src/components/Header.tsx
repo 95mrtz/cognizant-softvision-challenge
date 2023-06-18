@@ -22,7 +22,7 @@ const Header = () => {
       <div>
         <ul className="flex flex-row">
           <li>
-            <a href="https://github.com/hctmanuelortiz" rel="noreferrer" target={"_blank"}>
+            <a href="https://github.com/95mrtz" rel="noreferrer" target={"_blank"}>
               <IoLogoGithub className="mx-3 text-2xl text-indigo-600" />
             </a>
           </li>
@@ -36,7 +36,7 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/hctmanuelortiz" rel="noreferrer" target={"_blank"}>
+            <a href="https://twitter.com/95mrtz" rel="noreferrer" target={"_blank"}>
               <IoLogoTwitter className="mx-3 text-2xl text-indigo-600" />
             </a>
           </li>
